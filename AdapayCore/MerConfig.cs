@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AdapayCore
+﻿namespace AdapayCore
 {
     /// <summary>
     /// 商户配置 [2022-01-10 v1.4.1：https://docs.adapay.tech/sdk/csharpsdkaccess.html]
