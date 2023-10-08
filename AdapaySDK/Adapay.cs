@@ -1,50 +1,70 @@
 ﻿using System;
-
 using System.Collections.Generic;
 using AdapayCore;
 
-
 namespace AdapaySDK
 {
+    /// <summary>
+    /// [2022-01-10 v1.4.1：https://docs.adapay.tech/sdk/csharpsdkaccess.html]
+    /// </summary>
     public class Adapay
     {
+        /// <summary>
+        /// sdk版本
+        /// </summary>
         private const string sdk_version = "C#v1.4.1";
 
-        public static string deviceId="";
+        public static string deviceId { get; set; } = "";
 
         public static Dictionary<string, MerConfig> merchantConfigs;
 
-        public static bool isMock = false;
+        public static bool isMock { get; set; } = false;
 
-         private static bool _debug = false;
-        public static bool debug {
-            set {
+        private static bool _debug = false;
+        public static bool debug
+        {
+            set
+            {
                 _debug = value;
                 CoreUtils.debug = value;
             }
-
-            get {
-                if (!_debug) {
+            get
+            {
+                if (!_debug)
+                {
                     return false;
                 }
                 return _debug;
             }
         }
 
-       
 
-        public static void initWithMerConfig(MerConfig config) {
+        /// <summary>
+        /// 初始化商户配置
+        /// </summary>
+        /// <param name="config"></param>
+        /// <exception cref="Exception"></exception>
+        public static void initWithMerConfig(MerConfig config)
+        {
             initAdapayCore();
             if (null != config)
             {
-                merchantConfigs = new Dictionary<string, MerConfig>();
-                merchantConfigs.Add("default", config);
+                merchantConfigs = new Dictionary<string, MerConfig>
+                {
+                    { "default", config }
+                };
             }
-            else {
+            else
+            {
                 throw new Exception("configs cannot be null");
             }
         }
 
+        /// <summary>
+        /// 初始化多商户配置
+        /// </summary>
+        /// <param name="configs"></param>
+        /// <exception cref="Exception"></exception>
         public static void initWithMerConfigs(Dictionary<string, MerConfig> configs)
         {
             initAdapayCore();
@@ -56,16 +76,14 @@ namespace AdapaySDK
             {
                 throw new Exception("configs cannot be null");
             }
-            
+
         }
 
-
-        private static void initAdapayCore (){
-
+        private static void initAdapayCore()
+        {
             CoreUtils.BASE_URL = ConfigConstant.BASE_URL;
             CoreUtils.RSA_PUB_KEY = ConfigConstant.RSA_PUB_KEY;
             CoreUtils.sdk_version = sdk_version;
-
             /** 
             MQTT_Config.MQTT_ACCESS_KEY = MQTT_Constant.MQTT_ACCESS_KEY;
             MQTT_Config.MQTT_CLIENT_ID_PREFIX = MQTT_Constant.MQTT_CLIENT_ID_PREFIX;
@@ -73,15 +91,20 @@ namespace AdapaySDK
             MQTT_Config.MQTT_INSTANCE_ID = MQTT_Constant.MQTT_INSTANCE_ID;
             MQTT_Config.MQTT_TOPIC_PREFIX = MQTT_Constant.MQTT_TOPIC_PREFIX;
             **/
-
         }
     }
 
-    class AdapayRequest {
+    class AdapayRequest
+    {
 
+        /// <summary>
+        /// 获取商户配置
+        /// </summary>
+        /// <param name="merchantKey"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public static MerConfig fetchConfig(string merchantKey)
         {
-
             if (null == merchantKey)
             {
 
@@ -100,13 +123,17 @@ namespace AdapaySDK
                 throw new Exception("configInfo for merchantkey-" + merchantKey + "is not configed");
             }
             return config;
-
-
         }
-        
 
-        public static Dictionary<string, Object> requestAdapay(Dictionary<string, object> requestParams, string uri, string merchantKey) {
-
+        /// <summary>
+        /// 发起请求[post]
+        /// </summary>
+        /// <param name="requestParams"></param>
+        /// <param name="uri"></param>
+        /// <param name="merchantKey"></param>
+        /// <returns></returns>
+        public static Dictionary<string, object> requestAdapay(Dictionary<string, object> requestParams, string uri, string merchantKey)
+        {
             MerConfig config = fetchConfig(merchantKey);
             string apikey = config.apiKey;
             if (Adapay.isMock)
@@ -114,10 +141,16 @@ namespace AdapaySDK
                 apikey = config.apiMockKey;
             }
             return NetUtils.requestAdapay(requestParams, null, null, uri, NetUtils.POST, apikey, config.privateKey);
-
         }
 
-        public static Dictionary<string, Object> getRequestAdapay(Dictionary<string, object> requestParams, string uri, string merchantKey)
+        /// <summary>
+        /// 发起请求[get]
+        /// </summary>
+        /// <param name="requestParams"></param>
+        /// <param name="uri"></param>
+        /// <param name="merchantKey"></param>
+        /// <returns></returns>
+        public static Dictionary<string, object> getRequestAdapay(Dictionary<string, object> requestParams, string uri, string merchantKey)
         {
 
             MerConfig config = fetchConfig(merchantKey);
@@ -130,8 +163,16 @@ namespace AdapaySDK
 
         }
 
-
-        public static Dictionary<string, Object> requestAdapay(Dictionary<string, object> requestParams, string filePath, string fileParam, string uri, string merchantKey)
+        /// <summary>
+        /// 发起请求[post]
+        /// </summary>
+        /// <param name="requestParams"></param>
+        /// <param name="filePath"></param>
+        /// <param name="fileParam"></param>
+        /// <param name="uri"></param>
+        /// <param name="merchantKey"></param>
+        /// <returns></returns>
+        public static Dictionary<string, object> requestAdapay(Dictionary<string, object> requestParams, string filePath, string fileParam, string uri, string merchantKey)
         {
 
             MerConfig config = fetchConfig(merchantKey);
@@ -141,11 +182,18 @@ namespace AdapaySDK
                 apikey = config.apiMockKey;
             }
 
-            return NetUtils.requestAdapay(requestParams, filePath, fileParam, uri, NetUtils.POST,  apikey, config.privateKey);
+            return NetUtils.requestAdapay(requestParams, filePath, fileParam, uri, NetUtils.POST, apikey, config.privateKey);
 
         }
 
-        public static Dictionary<string, Object> requestAdapayPageServer(Dictionary<string, object> requestParams, string uri, string merchantKey)
+        /// <summary>
+        /// 发起请求[post]
+        /// </summary>
+        /// <param name="requestParams"></param>
+        /// <param name="uri"></param>
+        /// <param name="merchantKey"></param>
+        /// <returns></returns>
+        public static Dictionary<string, object> requestAdapayPageServer(Dictionary<string, object> requestParams, string uri, string merchantKey)
         {
             MerConfig config = fetchConfig(merchantKey);
             string apikey = config.apiKey;
@@ -156,7 +204,15 @@ namespace AdapaySDK
 
             return NetUtils.requestAdapayWithURL(requestParams, null, null, ConfigConstant.PAGE_SERVER_BASE_URL + uri, NetUtils.POST, apikey, config.privateKey);
         }
-        public static Dictionary<string, Object> getAdapayPageServer(Dictionary<string, object> requestParams, string uri, string merchantKey)
+
+        /// <summary>
+        /// 发起请求[get]
+        /// </summary>
+        /// <param name="requestParams"></param>
+        /// <param name="uri"></param>
+        /// <param name="merchantKey"></param>
+        /// <returns></returns>
+        public static Dictionary<string, object> getAdapayPageServer(Dictionary<string, object> requestParams, string uri, string merchantKey)
         {
             MerConfig config = fetchConfig(merchantKey);
             string apikey = config.apiKey;

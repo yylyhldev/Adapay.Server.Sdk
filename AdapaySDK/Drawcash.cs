@@ -1,53 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace AdapaySDK
 {
     public class Drawcash
     {
-
-        /**
-         * 创建取现对象
-         *
-         * @param params 创建取现对象的请求参数，参见 AdaPay api
-         * @return 取现对象
-         */
+        #region 创建取现对象
+        /// <summary>
+        /// 创建取现对象
+        /// </summary>
+        /// <param name="requestParams"></param>
+        /// <param name="merchantKey"></param>
+        /// <returns>取现对象</returns>
         public static Dictionary<string, object> create(Dictionary<string, object> requestParams)
         {
             return AdapayRequest.requestAdapay(requestParams, APIUrlEnum.DRAW_CASH, null);
         }
-
-        /**
-         * 创建取现对象
-         *
-         * @param params 创建取现对象的请求参数，参见 AdaPay api
-         * @return 取现对象
-         */
+        /// <summary>
+        /// 创建取现对象
+        /// </summary>
+        /// <param name="requestParams"></param>
+        /// <param name="merchantKey"></param>
+        /// <returns>取现对象</returns>
         public static Dictionary<string, object> create(Dictionary<string, object> requestParams, string merchantKey)
         {
             return AdapayRequest.requestAdapay(requestParams, APIUrlEnum.DRAW_CASH, merchantKey);
         }
+        #endregion
 
-        /**
-         * 查询取现状态
-         *
-         * @param params 查询取现状态，参见 AdaPay api
-         * @return 取现状态
-         */
+        #region 创建取现对象
+        /// <summary>
+        /// 查询取现状态
+        /// </summary>
+        /// <param name="requestParams"></param>
+        /// <returns>取现状态</returns>
         public static Dictionary<string, object> query(Dictionary<string, object> requestParams)
         {
             return AdapayRequest.getRequestAdapay(requestParams, APIUrlEnum.QUERY_CASHS_STAT_V1, null);
         }
-
-        /**
-         * 查询取现状态
-         *
-         * @param params 查询取现状态，参见 AdaPay api
-         * @return 取现状态
-         */
+        /// <summary>
+        /// 查询取现状态
+        /// </summary>
+        /// <param name="requestParams"></param>
+        /// <param name="merchantKey"></param>
+        /// <returns>取现状态</returns>
         public static Dictionary<string, object> query(Dictionary<string, object> requestParams, string merchantKey)
         {
             return AdapayRequest.getRequestAdapay(requestParams, APIUrlEnum.QUERY_CASHS_STAT_V1, merchantKey);
-        }
+        } 
+        #endregion
     }
 }

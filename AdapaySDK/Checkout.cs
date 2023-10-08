@@ -1,62 +1,55 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace AdapaySDK
 {
+    /// <summary>
+    /// 收银台对象
+    /// </summary>
     public class Checkout
     {
-
-        /**
-        * 创建收银台对象
-        *
-        * @param requestParams 创建收银台对象 AdaPay api
-        * @return 收银台对象
-        */
-        public static Dictionary<string, Object> create(Dictionary<string, object> requestParams)
+        #region 创建收银台对象
+        /// <summary>
+        /// 创建收银台对象
+        /// </summary>
+        /// <param name="requestParams">创建收银台对象 AdaPay api</param>
+        /// <param name="merchantKey"></param>
+        /// <returns>收银台对象</returns>
+        public static Dictionary<string, object> create(Dictionary<string, object> requestParams, string merchantKey)
         {
-
-            return AdapayRequest.requestAdapayPageServer(requestParams, APIUrlEnum.CREATE_CHECK_OUT, null);
-        }
-
-        /**
-        * 创建收银台对象
-        *
-        * @param requestParams 创建收银台对象 AdaPay api
-        * @param merchantKey merchantKey
-        * @return 收银台对象
-        */
-        public static Dictionary<string, Object> create(Dictionary<string, object> requestParams, string merchantKey)
-        {
-
             return AdapayRequest.requestAdapayPageServer(requestParams, APIUrlEnum.CREATE_CHECK_OUT, merchantKey);
         }
-
-        /**
-        * 查询收银台对象列表
-        *
-        * @param requestParams 查询收银台对象列表 AdaPay api
-        * @param merchantKey merchantKey
-        * @return 收银台对象
-        */
-        public static Dictionary<string, Object> queryList(Dictionary<string, object> requestParams, string merchantKey)
+        /// <summary>
+        /// 创建收银台对象
+        /// </summary>
+        /// <param name="requestParams">创建收银台对象 AdaPay api</param>
+        /// <param name="merchantKey"></param>
+        /// <returns>收银台对象</returns>
+        public static Dictionary<string, object> create(Dictionary<string, object> requestParams)
         {
+            return AdapayRequest.requestAdapayPageServer(requestParams, APIUrlEnum.CREATE_CHECK_OUT, null);
+        }
+        #endregion
 
+        #region 查询收银台对象列表
+        /// <summary>
+        /// 查询收银台对象列表
+        /// </summary>
+        /// <param name="requestParams">查询收银台对象列表 AdaPay api</param>
+        /// <param name="merchantKey"></param>
+        /// <returns>收银台对象</returns>
+        public static Dictionary<string, object> queryList(Dictionary<string, object> requestParams, string merchantKey)
+        {
             return AdapayRequest.requestAdapayPageServer(requestParams, APIUrlEnum.LIST_CHECK_OUT, merchantKey);
         }
-
-
-        /**
-        * 查询收银台对象列表
-        *
-        * @param requestParams 查询收银台对象列表 AdaPay api
-        * @return 收银台对象
-        */
-        public static Dictionary<string, Object> queryList(Dictionary<string, object> requestParams)
+        /// <summary>
+        /// 查询收银台对象列表
+        /// </summary>
+        /// <param name="requestParams">查询收银台对象列表 AdaPay api</param>
+        /// <returns>收银台对象</returns>
+        public static Dictionary<string, object> queryList(Dictionary<string, object> requestParams)
         {
-
             return AdapayRequest.requestAdapayPageServer(requestParams, APIUrlEnum.LIST_CHECK_OUT, null);
-        }
+        } 
+        #endregion
     }
 }

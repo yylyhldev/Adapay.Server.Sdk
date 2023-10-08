@@ -1,33 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace AdapaySDK
 {
-    /**
-     * 账户对象
-     */
+    /// <summary>
+    /// 账户对象
+    /// </summary>
     public class Account
     {
-        /**
-         * 账户对象支付
-         *
-         * @param requestParams  请求参数
-         * @param merchantKey merchantKey
-         * @return 查询的支付撤销对象
-         */
-        public static Dictionary<string, Object> payment(Dictionary<string, object> requestParams)
+        /// <summary>
+        /// 账户对象支付
+        /// </summary>
+        /// <param name="requestParams">请求参数</param>
+        /// <returns>查询的支付撤销对象</returns>
+        public static Dictionary<string, object> payment(Dictionary<string, object> requestParams)
         {
             return AdapayRequest.requestAdapayPageServer(requestParams, APIUrlEnum.CREATE_ACCOUNT_PAYMENT, null);
         }
 
-        /**
-         *  
-         * @param requestParams 请求参数
-         * @param merchantKey merchantKey
-         */
-        public static Dictionary<string, Object> payment(Dictionary<string, object> requestParams, string merchantKey)
+        /// <summary>
+        /// 账户对象支付
+        /// </summary>
+        /// <param name="requestParams"></param>
+        /// <param name="merchantKey"></param>
+        /// <returns>查询的支付撤销对象</returns>
+        public static Dictionary<string, object> payment(Dictionary<string, object> requestParams, string merchantKey)
         {
             return AdapayRequest.requestAdapayPageServer(requestParams, APIUrlEnum.CREATE_ACCOUNT_PAYMENT, merchantKey);
         }

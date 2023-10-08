@@ -7,15 +7,21 @@ using System.IO;
 
 namespace AdapayCore
 {
-    /// <summary>
-    /// [2022-01-10 v1.4.1：https://docs.adapay.tech/sdk/csharpsdkaccess.html]
-    /// </summary>
     public class CoreUtils
     {
-        public static bool debug = false;
-        public static string sdk_version = "C#v1.4.1";
-        public static string BASE_URL = "https://api.adapay.tech";
-        public static string RSA_PUB_KEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCwN6xgd6Ad8v2hIIsQVnbt8a3JituR8o4Tc3B5WlcFR55bz4OMqrG/356Ur3cPbc2Fe8ArNd/0gZbC9q56Eb16JTkVNA/fye4SXznWxdyBPR7+guuJZHc/VW2fKH2lfZ2P3Tt0QkKZZoawYOGSMdIvO+WqK44updyax0ikK6JlNQIDAQAB";
+        public static bool debug { get; set; } = false;
+        /// <summary>
+        /// sdk版本
+        /// </summary>
+        public static string sdk_version { get; set; } = "C#v1.2.0";
+        /// <summary>
+        /// 接口域名
+        /// </summary>
+        public static string BASE_URL { get; set; } = "https://api.adapay.tech";
+        /// <summary>
+        /// 商户公钥
+        /// </summary>
+        public static string RSA_PUB_KEY { get; set; } = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCwN6xgd6Ad8v2hIIsQVnbt8a3JituR8o4Tc3B5WlcFR55bz4OMqrG/356Ur3cPbc2Fe8ArNd/0gZbC9q56Eb16JTkVNA/fye4SXznWxdyBPR7+guuJZHc/VW2fKH2lfZ2P3Tt0QkKZZoawYOGSMdIvO+WqK44updyax0ikK6JlNQIDAQAB";
 
         public static string GetMD5Hash(string str)
         {

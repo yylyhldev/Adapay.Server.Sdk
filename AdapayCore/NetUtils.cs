@@ -10,14 +10,22 @@ using Org.BouncyCastle.Security;
 
 namespace AdapayCore
 {
-    /// <summary>
-    /// [2022-01-10 v1.4.1：https://docs.adapay.tech/sdk/csharpsdkaccess.html]
-    /// </summary>
     public class NetUtils
     {
         public const string POST = "post";
         public const string GET = "get";
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="postParams"></param>
+        /// <param name="filePath"></param>
+        /// <param name="fileParam"></param>
+        /// <param name="url"></param>
+        /// <param name="method"></param>
+        /// <param name="apiKey"></param>
+        /// <param name="privateKey"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public static Dictionary<string, object> requestAdapayWithURL(Dictionary<string, object> postParams, string filePath, string fileParam, string url, string method, string apiKey, string privateKey)
         {
             if (null == apiKey)
@@ -65,7 +73,7 @@ namespace AdapayCore
                         throw new Exception("public key veryfy singnature failed");
                     }
 
-                    responseJson = JsonConvert.DeserializeObject<Dictionary<string, Object>>(data);
+                    responseJson = JsonConvert.DeserializeObject<Dictionary<string, object>>(data);
                     CoreUtils.Log("response:" + responseText);
 
                 }

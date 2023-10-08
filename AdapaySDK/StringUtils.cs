@@ -5,10 +5,11 @@ namespace AdapaySDK
 {
     public class StringUtils
     {
-        public static string tryGetNotNullValue(Dictionary<string, object> dict, string key) {
+        public static string tryGetNotNullValue(Dictionary<string, object> dict, string key)
+        {
             object value = null;
             dict.TryGetValue(key, out value);
-            if (String.IsNullOrWhiteSpace((string)value))
+            if (string.IsNullOrWhiteSpace((string)value))
             {
                 throw new Exception(value + " cannot be empty");
             }
