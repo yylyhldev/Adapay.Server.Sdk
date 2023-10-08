@@ -12,8 +12,8 @@ namespace AdapayCore
 {
     public class NetUtils
     {
-        public const string POST = "post";
-        public const string GET = "get";
+        public static string POST => "post";
+        public static string GET => "get";
         /// <summary>
         /// 
         /// </summary>
@@ -109,17 +109,17 @@ namespace AdapayCore
         public static Dictionary<string, object> requestAdapay(Dictionary<string, object> postParams, string filePath, string fileParam, string uri, string method, string apiKey, string privateKey)
         {
             return requestAdapayWithURL(postParams, filePath, fileParam, CoreUtils.BASE_URL + uri, method, apiKey, privateKey);
-
         }
 
         public static Dictionary<string, object> requestAdapay(Dictionary<string, object> postParams, string uri, string method, string apiKey, string privateKey)
         {
             return requestAdapayWithURL(postParams, null, null, CoreUtils.BASE_URL + uri, method, apiKey, privateKey);
-
         }
 
-        //设置get请求参数
-        // get post 以及post 上传文件的接口，url地址以及签名方式有差别
+        /// <summary>
+        /// 设置get请求参数 [get post 以及post 上传文件的接口，url地址以及签名方式有差别]
+        /// </summary>
+        /// <returns></returns>
         private static HttpWebRequest CreateGetRequest(Dictionary<string, object> postParams, string requireUrl, string apiKey, string privateKey)
         {
             string json_params = CoreUtils.getOrignalString(postParams);
@@ -133,7 +133,7 @@ namespace AdapayCore
             requireUrl = requireUrl + "?" + json_params;
             CoreUtils.Log("requireUrl:" + requireUrl);
 
-            HttpWebRequest request = _ = (HttpWebRequest)WebRequest.Create(requireUrl);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requireUrl);
 
             WebHeaderCollection header = request.Headers;
 
@@ -143,14 +143,15 @@ namespace AdapayCore
             CoreUtils.Log("apikey..." + apiKey);
             CoreUtils.Log("SDK_version..." + CoreUtils.sdk_version);
 
-
             request.Method = "get";
             request.ContentType = "text/html;charset=UTF-8";
-
             return request;
         }
 
-        //设置不带文件的post请求参数
+        /// <summary>
+        /// 设置不带文件的post请求参数
+        /// </summary>
+        /// <returns></returns>
         private static HttpWebRequest CreatePostRequest(Dictionary<string, object> postParams, string requireUrl, string apiKey, string privateKey)
         {
             string json_params = JsonConvert.SerializeObject(postParams, Formatting.None);
@@ -183,12 +184,14 @@ namespace AdapayCore
             return request;
         }
 
-        //设置文件上传request
+        /// <summary>
+        /// 设置文件上传request
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         private static HttpWebRequest CreateUploadRequest(Dictionary<string, object> postParams, string filePath, string fileParam, string requireUrl, string apiKey, string privateKey)
         {
-
-            HttpWebRequest request = request = (HttpWebRequest)WebRequest.Create(requireUrl);
-
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requireUrl);
             string json_params = CoreUtils.getOrignalString(postParams);
             string json_string = requireUrl + json_params;
             //参数中会有中文,签名前需url encode

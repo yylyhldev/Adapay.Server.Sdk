@@ -55,30 +55,24 @@ namespace AdapayCore
 
             return buff;
         }
-
+        /// <summary>
+        /// 字典转key=value
+        /// </summary>
+        /// <param name="dict"></param>
+        /// <returns></returns>
         public static string getOrignalString(Dictionary<string, object> dict)
         {
-
             Dictionary<string, object> params_SortedByKey = dict.OrderBy(p => p.Key).ToDictionary(p => p.Key, o => o.Value);
             StringBuilder orinalStr = new StringBuilder("");
-
             foreach (KeyValuePair<string, object> item in params_SortedByKey)
             {
-
                 orinalStr.Append(item.Key)
                     .Append("=")
                     .Append(item.Value)
                     .Append("&");
-
             }
-            if (orinalStr.Equals(""))
-            {
-                return "";
-            }
-            else
-            {
-                orinalStr.Remove(orinalStr.Length - 1, 1);
-            }
+            if (orinalStr.Equals("")) return "";
+            orinalStr.Remove(orinalStr.Length - 1, 1);
             return orinalStr.ToString();
         }
         public static void Log(string message)
