@@ -18,9 +18,15 @@ namespace AdapaySDK
 
         public static Dictionary<string, MerConfig> merchantConfigs;
 
+        /// <summary>
+        /// isMock 模式，默认为生产模式 true，false可以使用 mock模式
+        /// </summary>
         public static bool isMock { get; set; } = false;
 
         private static bool _debug = false;
+        /// <summary>
+        /// isMock 模式，默认为生产模式 true，false可以使用 mock模式
+        /// </summary>
         public static bool debug
         {
             set

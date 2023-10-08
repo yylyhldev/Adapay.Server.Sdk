@@ -8,11 +8,11 @@ namespace AdapaySDK
     /// </summary>
     public class Payment
     {
-        #region 创建一个支付交易
+        #region 发起支付
         /// <summary>
-        /// 创建一个支付交易
+        /// 发起支付
         /// </summary>
-        /// <param name="requestParams">创建支付的请求参数，参见 AdaPay api</param>
+        /// <param name="requestParams">创建支付的请求参数</param>
         /// <param name="merchantKey"></param>
         /// <returns>创建的支付对象</returns>
         public static Dictionary<string, object> create(Dictionary<string, object> requestParams, string merchantKey)
@@ -28,7 +28,7 @@ namespace AdapaySDK
             return AdapayRequest.requestAdapay(requestParams, APIUrlEnum.PAYMENT_V1, merchantKey);
         }
         /// <summary>
-        /// 创建一个支付交易
+        /// 发起支付
         /// </summary>
         /// <param name="requestParams">创建支付的请求参数，参见 AdaPay api</param>
         /// <returns>创建的支付对象</returns>
@@ -44,9 +44,9 @@ namespace AdapaySDK
         }
         #endregion
 
-        #region 关闭一个支付
+        #region 关闭支付
         /// <summary>
-        /// 关闭一个支付
+        /// 关闭支付
         /// </summary>
         /// <param name="requestParams">要关闭的支付id</param>
         /// <param name="merchantKey"></param>
@@ -59,7 +59,7 @@ namespace AdapaySDK
             return AdapayRequest.requestAdapay(requestParams, uri, merchantKey);
         }
         /// <summary>
-        /// 关闭一个支付
+        /// 关闭支付
         /// </summary>
         /// <param name="requestParams">要关闭的支付id</param>
         /// <returns>关闭的支付对象</returns>
