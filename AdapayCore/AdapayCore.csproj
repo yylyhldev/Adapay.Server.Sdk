@@ -1,7 +1,27 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>net40;net45;netstandard2.0;netcoreapp2.1;netcoreapp3.1;net6.0</TargetFrameworks>
+    <RootNamespace>AdapayCore</RootNamespace>
+    <AssemblyName>AdapayCore</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <Authors>adapay</Authors>
+    <Company>adapay</Company>
+    <Title>AdapayCore</Title>
+    <Copyright>Copyright (c) 2023 adapay</Copyright>
+    <Description>Adapay C# SDK(from https://docs.adapay.tech/sdk/csharpsdkaccess.html v1.4.1 2022-01-10)</Description>
+    <PackageId>AdapayCore</PackageId>
+    <PackageTags>Adapay;AdapayCore</PackageTags>
+    <PackageProjectUrl></PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <RepositoryType></RepositoryType>
+    <RepositoryUrl></RepositoryUrl>
+    <PackageIcon></PackageIcon>
+    <MinClientVersion>1.0.0</MinClientVersion>
+    <PackageVersion>1.0.0</PackageVersion>
+    <PackageReleaseNotes>Adapay C# SDK(from https://docs.adapay.tech/sdk/csharpsdkaccess.html v1.4.1 2022-01-10)</PackageReleaseNotes>
+    <PackageOutputPath>../nuget</PackageOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
