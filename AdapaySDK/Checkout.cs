@@ -22,7 +22,6 @@ namespace AdapaySDK
         /// 创建收银台对象
         /// </summary>
         /// <param name="requestParams">创建收银台对象 AdaPay api</param>
-        /// <param name="merchantKey"></param>
         /// <returns>收银台对象</returns>
         public static Dictionary<string, object> create(Dictionary<string, object> requestParams)
         {

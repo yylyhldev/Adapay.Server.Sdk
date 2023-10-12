@@ -21,6 +21,23 @@
 
     class APIUrlEnum
     {
+        #region 跳转支付（jumppay）
+        /// <summary>
+        /// 托管 微信 小程序预下单接口
+        /// </summary>
+        public const string WXPAY_CREATEORDER_JUMPPAYMENT_V1 = "/v1/wxpay/createOrder";
+
+        /// <summary>
+        /// 托管 支付宝 小程序预下单接口
+        /// </summary>
+        public const string PREPAY_PREORDER_JUMPPAYMENT_V1 = "/v1/prePay/preOrder";
+
+        /// <summary>
+        /// 动态二维码预下单接口
+        /// </summary>
+        public const string QRPREPAY_QRPREORDER_JUMPPAYMENT_V1 = "/v1/qrPrePay/qrPreOrder";
+        #endregion
+
         #region 支付对象（Payment）
         /// <summary>
         /// 支付
@@ -184,7 +201,6 @@
         /// </summary>
         public const string FREEZE_ACCOUNT_LIST = "/v1/settle_accounts/freeze/list";
         #endregion
-
 
         #region 账户解冻对象
         /// <summary>

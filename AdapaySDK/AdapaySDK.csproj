@@ -19,8 +19,8 @@
     <RepositoryUrl></RepositoryUrl>
     <PackageIcon></PackageIcon>
     <MinClientVersion>1.0.0</MinClientVersion>
-    <PackageVersion>1.0.0</PackageVersion>
-    <PackageReleaseNotes>Adapay C# SDK(from https://docs.adapay.tech/sdk/csharpsdkaccess.html v1.4.1 2022-01-10)</PackageReleaseNotes>
+    <PackageVersion>1.0.1</PackageVersion>
+    <PackageReleaseNotes>add jumppay(https://docs.adapay.tech/api/jumppay.html) Adapay C# SDK(from https://docs.adapay.tech/sdk/csharpsdkaccess.html v1.4.1 2022-01-10)</PackageReleaseNotes>
     <PackageOutputPath>../nuget</PackageOutputPath>
     <IncludeSymbols>False</IncludeSymbols>
     <IncludeSource>true</IncludeSource>

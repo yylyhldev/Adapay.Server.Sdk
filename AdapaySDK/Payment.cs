@@ -8,6 +8,45 @@ namespace AdapaySDK
     /// </summary>
     public class Payment
     {
+        #region 发起支付-跳转支付
+        /// <summary>
+        /// 发起支付-跳转支付
+        /// </summary>
+        /// <param name="requestParams">创建支付的请求参数</param>
+        /// <param name="merchantKey"></param>
+        /// <returns>创建的支付对象</returns>
+        public static Dictionary<string, object> createJump(Dictionary<string, object> requestParams, string merchantKey)
+        {
+            requestParams.TryGetValue("currency", out var currency);
+            if (currency == null)
+            {
+                requestParams.Add("currency", "cny");
+            }
+            requestParams.TryGetValue("adapay_func_code", out var adapay_func_code);
+            string code = adapay_func_code + string.Empty;
+            var url = code == "wxpay.createOrder" ? APIUrlEnum.WXPAY_CREATEORDER_JUMPPAYMENT_V1 : code == "prePay.preOrder" ? APIUrlEnum.PREPAY_PREORDER_JUMPPAYMENT_V1 : APIUrlEnum.QRPREPAY_QRPREORDER_JUMPPAYMENT_V1;
+            return AdapayRequest.requestAdapayPageServer(requestParams, url, merchantKey);
+        }
+        /// <summary>
+        /// 发起支付
+        /// </summary>
+        /// <param name="requestParams">创建支付的请求参数，参见 AdaPay api</param>
+        /// <returns>创建的支付对象</returns>
+        public static Dictionary<string, object> createJump(Dictionary<string, object> requestParams)
+        {
+            object currency = null;
+            requestParams.TryGetValue("currency", out currency);
+            if (currency == null)
+            {
+                requestParams.Add("currency", "cny");
+            }
+            requestParams.TryGetValue("adapay_func_code", out var adapay_func_code);
+            string code = adapay_func_code + string.Empty;
+            var url = code == "wxpay.createOrder" ? APIUrlEnum.WXPAY_CREATEORDER_JUMPPAYMENT_V1 : code == "prePay.preOrder" ? APIUrlEnum.PREPAY_PREORDER_JUMPPAYMENT_V1 : APIUrlEnum.QRPREPAY_QRPREORDER_JUMPPAYMENT_V1;
+            return AdapayRequest.requestAdapayPageServer(requestParams, url, null);
+        }
+        #endregion
+
         #region 发起支付
         /// <summary>
         /// 发起支付
@@ -19,12 +58,10 @@ namespace AdapaySDK
         {
             object currency = null;
             requestParams.TryGetValue("currency", out currency);
-
             if (currency == null)
             {
                 requestParams.Add("currency", "cny");
             }
-
             return AdapayRequest.requestAdapay(requestParams, APIUrlEnum.PAYMENT_V1, merchantKey);
         }
         /// <summary>
